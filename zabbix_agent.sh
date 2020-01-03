@@ -70,20 +70,20 @@ select_os(){
   elif [[ $os_version == "debian" ]]; then
       if [[ $VERSION_ID == "9" ]]; then
           wget https://repo.zabbix.com/zabbix/4.4/debian/pool/main/z/zabbix-release/zabbix-release_4.4-1+stretch_all.deb
-          dpkg -i zabbix-release_4.4-1+stretch_all.deb
+          dpkg -i zabbix-release_4.4-1+stretch_all.deb && rm -rf zabbix-release_4.4-1+stretch_all.deb
       else
           wget https://repo.zabbix.com/zabbix/4.4/debian/pool/main/z/zabbix-release/zabbix-release_4.4-1+buster_all.deb
-          dpkg -i zabbix-release_4.4-1+buster_all.deb
+          dpkg -i zabbix-release_4.4-1+buster_all.deb && rm -rf zabbix-release_4.4-1+buster_all.deb
       fi
       apt update -y && apt install -y zabbix-agent
 
   elif [[ $os_version == "ubuntu" ]]; then
       if [[ $VERSION_ID == "16.04" ]]; then
           wget https://repo.zabbix.com/zabbix/4.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.4-1+xenial_all.deb
-          dpkg -i zabbix-release_4.4-1+xenial_all.deb
+          dpkg -i zabbix-release_4.4-1+xenial_all.deb && rm -rf zabbix-release_4.4-1+xenial_all.deb
       else
           wget https://repo.zabbix.com/zabbix/4.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.4-1+bionic_all.deb
-          dpkg -i zabbix-release_4.4-1+bionic_all.deb
+          dpkg -i zabbix-release_4.4-1+bionic_all.deb && rm -rf zabbix-release_4.4-1+bionic_all.deb
       fi
       apt update -y && apt install -y zabbix-agent
   fi
@@ -99,6 +99,7 @@ select_os(){
 
 #==manin
 main(){
+  clear
   check_root
   check_os
   echo -e "----ZABBIX AGENT AUTO INSTALL SCRIPT----"
