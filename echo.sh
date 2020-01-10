@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#================
+#change repository to offical 
+#================
 
 echo 'deb http://mirrors.aliyun.com/debian/ stretch main non-free contrib
             deb-src http://mirrors.aliyun.com/debian/ stretch main non-free contrib
